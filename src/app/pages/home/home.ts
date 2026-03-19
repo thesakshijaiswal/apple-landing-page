@@ -4,7 +4,6 @@ import { Hero } from '../../components/hero/hero';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
   imports: [Navbar, Hero],
   templateUrl: './home.html',
 })

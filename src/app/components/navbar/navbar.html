@@ -1,1 +1,71 @@
-<p>navbar works!</p>
+<nav class="bg-gray-100 fixed w-full z-20 top-0 left-0 border-b border-gray-200">
+  <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="#home" (click)="setActive('home')" class="flex items-center space-x-3">
+      <img src="logos/logo.svg" class="h-8 w-auto" alt="Logo" />
+      <span class="self-center text-2xl font-semibold whitespace-nowrap">Applix</span>
+    </a>
+
+    <button
+      (click)="toggleMobileMenu()"
+      type="button"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center md:hidden"
+    >
+      <lucide-icon
+        [name]="isMobileMenuOpen ? 'X' : 'Menu'"
+        class="w-6 h-6 transition-transform duration-300"
+        [class.rotate-90]="isMobileMenuOpen"
+      ></lucide-icon>
+    </button>
+
+    <div [class.hidden]="!isMobileMenuOpen" class="w-full md:block md:w-auto">
+      <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 md:space-x-8 md:flex-row md:mt-0">
+        @for (item of navItems; track item.label) {
+          <li class="relative">
+            @if (item.children) {
+              <button
+                (click)="toggleDropdown()"
+                class="flex items-center justify-between w-full py-2 px-3 hover:text-blue-600 transition-colors"
+                [class.text-blue-600]="activeSection === item.fragment || isDropdownOpen"
+              >
+                {{ item.label }}
+                <lucide-icon
+                  [name]="isDropdownOpen ? 'chevron-up' : 'chevron-down'"
+                  class="w-4 h-4 ml-1"
+                ></lucide-icon>
+              </button>
+
+              <div
+                class="border border-gray-200 shadow-lg md:absolute md:top-full md:left-0 md:mt-2 md:w-52 bg-gray-100 rounded-lg z-50"
+                [class.hidden]="!isDropdownOpen"
+              >
+                <ul class="p-2 text-sm">
+                  @for (child of item.children; track child.label) {
+                    <li>
+                      <a
+                        [href]="'#' + child.fragment"
+                        (click)="setActive(child.fragment)"
+                        class="block p-2 hover:text-blue-600 transition-colors"
+                        [class.text-blue-600]="activeSection === child.fragment"
+                      >
+                        {{ child.label }}
+                      </a>
+                    </li>
+                  }
+                </ul>
+              </div>
+            } @else {
+              <a
+                [href]="'#' + item.fragment"
+                (click)="setActive(item.fragment)"
+                class="block py-2 px-3 hover:text-blue-600 transition-colors"
+                [class.text-blue-600]="activeSection === item.fragment"
+              >
+                {{ item.label }}
+              </a>
+            }
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
