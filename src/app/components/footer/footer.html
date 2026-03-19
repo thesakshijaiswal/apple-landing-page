@@ -1,0 +1,83 @@
+<footer class="bg-[#1a1a1a] text-white pt-20 pb-10 px-6 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-16 group">
+      <p class="text-gray-400 uppercase tracking-widest text-sm mb-4">
+        Interested in learning more?
+      </p>
+
+      <a
+        href="#contact"
+        class="inline-flex items-center text-4xl md:text-5xl font-bold hover:text-blue-400 transition-colors duration-300"
+      >
+        Connect With Us
+        <lucide-icon
+          name="arrow-up-right"
+          class="ml-4 w-10 h-10 md:w-14 md:h-14 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+        ></lucide-icon>
+      </a>
+    </div>
+
+    <hr class="border-gray-800 mb-16" />
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
+      <div class="md:col-span-5">
+        <p class="text-gray-400 text-lg leading-relaxed max-w-md">
+          Let us help you unlock the full potential of your business with innovative IT solutions
+          that deliver measurable results. Our experts are ready to collaborate and assist you in
+          navigating the path to success.
+        </p>
+      </div>
+
+      <div class="md:col-span-3">
+        <h4 class="text-sm font-bold uppercase tracking-widest mb-8">Quick Links</h4>
+
+        <ul class="space-y-4">
+          @for (link of quickLinks ?? []; track link.label) {
+            <li>
+              <a [href]="link.path" class="text-gray-400 hover:text-white transition-colors">
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+      <div class="md:col-span-4">
+        <h4 class="text-sm font-bold uppercase tracking-widest mb-8">Stay in Touch</h4>
+
+        <div class="flex space-x-4">
+          @for (social of socials ?? []; track social.name) {
+            <a
+              [href]="social.path"
+              class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <lucide-icon [name]="social.name" class="w-5 h-5 text-white"></lucide-icon>
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-wrap justify-center items-center gap-4 pt-10 border-t border-gray-800 text-xs text-gray-500"
+    >
+      <a href="#" class="hover:text-white">Privacy Policy</a>
+
+      <span class="hidden md:inline">|</span>
+
+      <p class="flex items-center gap-2 whitespace-nowrap font-semibold">
+        <span>Made With</span>
+        <img
+          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Red%20Heart.png"
+          alt="Red Heart"
+          width="18"
+          height="18"
+        />
+        <span>By Semporro</span>
+      </p>
+      <span class="hidden md:inline">|</span>
+      <span class="text-center">
+        {{ currentYear }} Copyright All right reserved team computers
+      </span>
+    </div>
+  </div>
+</footer>
