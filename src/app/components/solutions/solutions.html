@@ -1,0 +1,43 @@
+<section class="relative md:px-14 py-20 px-4 sm:px-12 overflow-hidden bg-gray-950 rounded-t-4xl">
+  <img
+    src="images/solutions-banner.webp"
+    alt="apple-products"
+    class="w-full h-full absolute object-cover inset-0 opacity-40"
+  />
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-1 flex flex-col justify-center">
+        <h2 class="text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
+          Solutions <br />
+          <span class="text-white"> tailored for your industry </span>
+        </h2>
+        <p class="text-gray-200 text-lg">
+          We bridge the gap between Apple’s powerful hardware and your industry’s unique demands.
+        </p>
+      </div>
+
+      <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        @for (item of industries; track item.name) {
+          <div
+            class="group relative py-8 px-4 rounded-3xl bg-black/20 border border-white/50 transition-all duration-500 hover:-translate-y-2 hover:bg-white/10 cursor-pointer overflow-hidden"
+          >
+            <div class="relative z-10">
+              <div
+                class="w-16 h-16 mb-6 rounded-2xl bg-white/20 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-500"
+              >
+                <lucide-icon [name]="item.icon" class="w-9 h-9"></lucide-icon>
+              </div>
+
+              <h3 class="text-xl font-semibold text-white mb-2">{{ item.name }}</h3>
+              <p
+                class="text-white text-sm opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0"
+              >
+                {{ item.description }}
+              </p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

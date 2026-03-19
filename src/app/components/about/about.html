@@ -1,4 +1,4 @@
-<section #statsSection class="max-w-7xl mx-auto px-2 py-20">
+<section #statsSection class="max-w-7xl mx-auto md:px-14 py-20 px-4 sm:px-12">
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
     <div class="space-y-8">
       <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
@@ -23,10 +23,12 @@
       @for (stat of stats; track stat.label; let i = $index) {
         <div
           [class]="stat.bgColor"
-          [class.lg:translate-y-12]="i === 1 || i === 3"
+          [class.translate-y-20]="i === 1 || i === 3"
           class="p-6 rounded-3xl flex flex-col justify-center items-center text-center transition-all duration-700 ease-out h-56 md:h-60"
         >
-          <div class="text-5xl md:text-6xl font-bold text-gray-900">
+          <div
+            class="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-gray-900"
+          >
             {{ stat.currentValue }}{{ stat.suffix }}
           </div>
           <p class="mt-4 text-sm md:text-lg font-semibold text-gray-500 uppercase">
